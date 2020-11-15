@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="kr.co.gdu.cash.restmapper.CashRestMapper">
+  
+  	<!--- 연도의 통합 지출을 월(1~12)별로 알수있는 Radar chart -->
+  <select id="selectOutOfYear" parameterType="int" resultType="java.util.Map">
+
+      SELECT
+
+         SUM(CASE WHEN MONTH(cashbook_date)=1 THEN cashbook_price END) ,
+         SUM(CASE WHEN MONTH(cashbook_date)=2 THEN cashbook_price END) ,
+         SUM(CASE WHEN MONTH(cashbook_date)=3 THEN cashbook_price END) ,
+         SUM(CASE WHEN MONTH(cashbook_date)=4 THEN cashbook_price END) ,
+         SUM(CASE WHEN MONTH(cashbook_date)=5 THEN cashbook_price END) ,
+         SUM(CASE WHEN MONTH(cashbook_date)=6 THEN cashbook_price END) ,
+         SUM(CASE WHEN MONTH(cashbook_date)=7 THEN cashbook_price END) ,
+         SUM(CASE WHEN MONTH(cashbook_date)=8 THEN cashbook_price END) ,
+         SUM(CASE WHEN MONTH(cashbook_date)=9 THEN cashbook_price END) ,
+         SUM(CASE WHEN MONTH(cashbook_date)=10 THEN cashbook_price END) ,
+         SUM(CASE WHEN MONTH(cashbook_date)=11 THEN cashbook_price END) ,
+         SUM(CASE WHEN MONTH(cashbook_date)=12 THEN cashbook_price END)
+
+      FROM cashbook
+      WHEREcashbook.cashbook_kind = '지출';
+      AND	YEAR(cashbook_date) = #{year}
+      
+
+   </select>
+  
+  
+  
+  
+  </mapper>
