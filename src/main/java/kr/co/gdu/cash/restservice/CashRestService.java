@@ -16,9 +16,30 @@ public class CashRestService {
 	
 	// 모든 연도 통합  1~12월 지출내역 
 	public Map<String, Object> getSelectOutOfYear(int year){
-		 System.out.println("getSelectOutOfYear 호출성공");
+		
 		return cashRestMapper.selectOutOfYear(year);
 	}
+	
+	// 모든 연도 통합  1~12월 수입내역 
+	public Map<String, Object> getSslectInOfYear(int year){
+			
+		return cashRestMapper.selectInOfYear(year);
+		
+	}
+	
+	// 2020 년  월 선택 주간  지출 내역 
+	public Map<String,Object> getselectOutWeekly(int month){
+		
+		return cashRestMapper.selectOutWeekly(month);
+	}
+	
+	// 2020 년  월 선택 주간  수입 내역 
+	public Map<String,Object> getselectInWeekly(int month){
+		
+		return cashRestMapper.selectInWeekly(month);
+	}
+	
+	
 	
 
 }
