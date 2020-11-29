@@ -4,7 +4,6 @@ package kr.co.gdu.cash.vo;
 public class Comment{
 	private int commentId;	//댓글번호
 	private int noticeId;		//공지번호 
-	private String commentWriter;    // 작성자 
 	private String commentContent; //댓글내용
 	private String commentDate; //댓글 날짜 
 	
@@ -20,12 +19,7 @@ public class Comment{
 	public void setNoticeId(int noticeId) {
 		this.noticeId = noticeId;
 	}
-	public String getCommentWriter() {
-		return commentWriter;
-	}
-	public void setCommentWriter(String commentWriter) {
-		this.commentWriter = commentWriter;
-	}
+	
 	public String getCommentContent() {
 		return commentContent;
 	}
@@ -40,7 +34,7 @@ public class Comment{
 	}
 	@Override
 	public String toString() {
-		return "Comment [commentId=" + commentId + ", noticeId=" + noticeId + ", commentWriter=" + commentWriter
+		return "Comment [commentId=" + commentId + ", noticeId=" + noticeId 
 				+ ", commentContent=" + commentContent + ", commentDate=" + commentDate + "]";
 	}
 	

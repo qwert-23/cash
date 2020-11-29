@@ -20,8 +20,7 @@
 	
 	<collection property="commentList" ofType="kr.co.gdu.cash.vo.Comment">
 		<result  property="commentId" column="comment_id" />
-		<result  property="noticeId" column="notice_id" />
-		<result  property="commentWriter" column="comment_writer" />	
+		<result  property="noticeId" column="notice_id" />	
 		<result  property="commentContent" column="comment_Content" />		
 		<result  property="commentDate" column="comment_date" />	
 
@@ -42,7 +41,6 @@
 	nf.noticefile_size, 
 	c.comment_id,
 	c.notice_id,
-	c.comment_writer,
 	c.comment_content,
 	c.comment_date
 		FROM notice n

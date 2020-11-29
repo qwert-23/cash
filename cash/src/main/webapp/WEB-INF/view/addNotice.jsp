@@ -38,16 +38,17 @@ $(document).ready(function(){
 		  enctype="multipart/form-data" 
 		  action="${pageContext.request.contextPath}/admin/addNotice">
 		<table border="1">
+		
 			<tr>
-				<td>notice_title</td>
+				<td>공지사항제목</td>
 				<td><input type="text" name="noticeTitle"></td>
 			</tr>
 			<tr>
-				<td>notice_content</td>
-				<td><textarea name="noticeContent" rows="3" cols="50"></textarea></td>
+				<td>공지사항내용</td>
+				<td><textarea name="noticeContent" rows="5" cols="50"></textarea></td>
 			</tr>
 			<tr>
-				<td>notice_file</td>
+				<td>파일첨부</td>
 				<td>
 					<div>
 						<button type="button" id="addBtn">파일추가</button>
@@ -59,7 +60,7 @@ $(document).ready(function(){
 			</tr>
 			<tr>
 				<td colspan="2">
-					<button type="button" id="submitBtn">submit</button>
+					<button type="button" id="submitBtn">작성</button>
 				</td>
 			</tr>
 		</table>

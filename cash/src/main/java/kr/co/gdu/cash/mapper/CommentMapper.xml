@@ -7,12 +7,14 @@
  	INSERT INTO 
 		 comment(   
 		 notice_id ,
-		 comment_content  
+		 comment_content,
+		 comment_date  
 		 ) 
 		 		
 		 VALUE (
 		 #{noticeId},
-		 #{commentContent}
+		 #{commentContent},
+			NOW()
 		 	)
 	
 	

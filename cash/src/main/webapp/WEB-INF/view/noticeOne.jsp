@@ -39,18 +39,33 @@
 	</table>
 	
 	<h3>댓글</h3>
+	
 	<table border="1">
+		<thead>
+			<tr>
+				<th>내용</th>
+				<th>작성일</th>
+				<th>삭제</th>
+			
+			</tr>
+			
+		</thead>
+	
 		<c:forEach var="c" items="${notice.commentList}">
 			<tr>
+			
 				<td>${c.commentContent}</td>
+				<td>${c.commentDate}</td>
+				
 				<td>
-					<a href="${pageContext.request.contextPath}/admin/removeComment/${board.noticeId}/${c.commentId}">삭제</a>
+					<a href="${pageContext.request.contextPath}/admin/removeComment?noticeId=${c.noticeId}&commentId=${c.commentId}">삭제</a>
 				</td>
+				
 			</tr>
 		</c:forEach>
 	</table>
 	<form action="${pageContext.request.contextPath}/admin/addComment" method="post">
-		<input type="hidden" name="noticeId" value="${noticeOne.noticeId}">
+		<input type="hidden" name="noticeId" value="${notice.noticeId}">
 		<textarea name="commentContent" rows="3" cols="50"></textarea>
 		<button type="submit">댓글입력</button>
 	</form>
