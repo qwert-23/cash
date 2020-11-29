@@ -13,7 +13,7 @@
 	
 	<h1>index</h1>
 	<!-- 공지 -->
-	<div>공지사항 <a href="/admin/noticeList/1">more</a></div>
+	<div>공지사항 <a href="${pageContext.request.contextPath}/admin/noticeList/1">more</a></div>
 	<div>
 		<table border="1">
 			<thead>

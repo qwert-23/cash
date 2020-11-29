@@ -28,7 +28,7 @@
 		</table>
 	</div>
 	<h1>로그인</h1>
-	<form action="/login" method="post">
+	<form method="post" action="${pageContext.request.contextPath}/login">
 		<div>
 			ID : <input type="text" name="id" value="goodee">
 		</div>

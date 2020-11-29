@@ -11,11 +11,12 @@ import kr.co.gdu.cash.vo.Notice;
 public interface NoticeMapper {
 	// index화면의 최근 5개공지를 보여주는 메서드
 	List<Notice> selectLatestNoiceList(); 
+	 // 공지사항 페이징 해서 보여주는 메서드
 	List<Notice> selectNoticeListByPage(Map<String, Integer> map);
 	int selectTotalCount();
 	
 	int insertNotice(Notice notice); //추가 
 	int deleteNotice(int boardId); //삭제 
-	
-	Notice selectNoticeOne(int noticeId);	//NoticeOne
+	int updateNotice(Notice notice); // 수정
+	Notice selectNoticeOne(int noticeId);	//상세
 }

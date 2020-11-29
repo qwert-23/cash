@@ -12,16 +12,15 @@
 	
 	<h1>noticeList</h1>
 	
-	<div>
+	<div>	
+		<div><a href="${pageContext.request.contextPath}/admin/addNotice">글쓰기</a></div>	
 		<table	border="1">
+		
 			<thead>
 				<tr>
 					<th>notice_Id</th>
 					<th>notice_title</th>
-					<th>notice_content</th>	
 					<th>notice_date</th>
-					<th>수정</th>	
-					<th>삭제</th>
 				</tr>
 				
 			</thead>
@@ -29,11 +28,8 @@
 					<c:forEach var ="n" items= "${noticeList}">
 						<tr>
 							<td>${n.noticeId}</td>
-							<td>${n.noticeTitle}</td>
-							<td>${n.noticeContent}</td>
+							<td><a href="${pageContext.request.contextPath}/admin/noticeOne/${n.noticeId}">${n.noticeTitle}</a></td>
 							<td>${n.noticeDate}</td>
-							<td><a href=""></a>수정</td>
-							<td><a href=""></a>삭제</td>
 					
 						</tr>
 					
@@ -49,6 +45,7 @@
 			<a href="${pageContext.request.contextPath}/admin/noticeList/${currentPage-1}">이전</a>
 		</c:if>
 		<c:if test="${currentPage < lastPage}">
+		
 			<a href="${pageContext.request.contextPath}/admin/noticeList/${currentPage+1}">다음</a>
 			<a href="${pageContext.request.contextPath}/admin/noticeList/${lastPage}">마지막</a>
 		</c:if>

@@ -42,13 +42,76 @@
 </body>
 
 <script>
+
+<!-- 전의 chhart랑 겹치게 나와 지움 -->
+	//chart.js 동적 크기
+	$('#chart1').remove();<!-- 전의 chhart랑 겹치게 나와 지움 -->
+	$('#newChart').append('<canvas id="chart1" style="height:60vh; width:80vw"></canvas>'); 
+	$.ajax({
+		url:'${pageContext.request.contextPath}/selectTotalOutOfYear/'+2020,
+		type:'get',
+		success:function(data){
+			console.log(data);
+			var ctx = document.getElementById('chart1').getContext('2d');
+			var chart = new Chart(ctx, {
+				type:'horizontalBar', // chart 종류
+				data:{
+					labels:['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'], // x축, y축
+					datasets:[{
+						label:'2020년 월 통합지출내역',
+						 backgroundColor: [	//배경색
+				                'rgba(255, 0, 0, 0.2)', //빨강
+				                'rgba(252, 102, 0, 0.2)',//주황
+				                'rgba(255, 255, 0, 0.2)',//노랑
+				                'rgba(125, 205, 0, 0.2)',//연두
+				                'rgba(0, 153, 0, 0.2)',//녹색
+				                'rgba(128, 0, 127, 0.2)',//보라
+				                'rgba(255, 0, 0, 0.2)', //빨강
+				                'rgba(252, 102, 0, 0.2)',//주황
+				                'rgba(255, 255, 0, 0.2)',//노랑
+				                'rgba(125, 205, 0, 0.2)',//연두
+				                'rgba(0, 153, 0, 0.2)',//녹색
+				                'rgba(128, 0, 127, 0.2)'//보라
+				            ],
+				            borderColor: [	//테두리 색
+					            //	  R    G  B   A(투명도)
+				            	'rgba(255, 0, 0, 0.2)', //빨강
+				                'rgba(252, 102, 0, 0.2)',//주황
+				                'rgba(255, 255, 0, 0.2)',//노랑
+				                'rgba(125, 205, 0, 0.2)',//연두
+				                'rgba(0, 153, 0, 0.2)',//녹색
+				                'rgba(128, 0, 127, 0.2)',//보라
+				                'rgba(255, 0, 0, 0.2)', //빨강
+				                'rgba(252, 102, 0, 0.2)',//주황
+				                'rgba(255, 255, 0, 0.2)',//노랑
+				                'rgba(125, 205, 0, 0.2)',//연두
+				                'rgba(0, 153, 0, 0.2)',//녹색
+				                'rgba(128, 0, 127, 0.2'//보라
+				            ],
+				          
+						data:[data.January, data.February, data.March, data.April, data.May, data.June, 
+							data.July, data.August,data.September,data.October,data.November,data.December],
+					}]
+				}, 
+				options:{
+					responsive: false,// 크기를 바꾸기위해 false
+					}
+			});
+		}
+	});
+
+
+
+
+
+
 	<!-- chart -->
 $('#selectTotalOutOfYear').click(function(){
-	$('#Mychart1').remove();<!-- 전의 chhart랑 겹치게 나와 지움 -->
+	$('chart1').remove();<!-- 전의 chhart랑 겹치게 나와 지움 -->
 	//chart.js 동적 크기
 	$('#newChart').append('<canvas id="chart1" style="height:40vh; width:70vw"></canvas>'); 
 	$.ajax({
-		url:'/selectTotalOutOfYear/'+$('#year').val(),
+		url:'${pageContext.request.contextPath}/selectTotalOutOfYear/'+$('#year').val(),
 		type:'get',
 		success:function(data){
 			console.log(data);
@@ -103,7 +166,7 @@ $('#selectTotalOutOfYear').click(function(){
 	<!--table -->
 $('#selectTotalOutOfYear').click(function(){
 	$.ajax({
-		url:'/selectTotalOutOfYear/'+$('#year').val(),
+		url:'${pageContext.request.contextPath}/selectTotalOutOfYear/'+$('#year').val(),
 		type:'get',
 		success:function(data){
 			console.log(data);

@@ -20,7 +20,7 @@ public class LoginController {
 	@Autowired private NoticeService noticeService;
 	@Autowired private MemberService memberService;
 	
-	@PostMapping("/login")
+	@PostMapping(value="/login")
 	public String login(Member member, HttpSession session) { // 로그인 액션
 		Member loginMember = memberService.getMemberById(member);
 		if(loginMember == null) {
@@ -32,7 +32,7 @@ public class LoginController {
 	
 	@GetMapping(value = {"/","/login"})
 	public String login(Model model, HttpSession session) { // 로그인폼
-		if(session.getAttribute("loginId") != null) { // 
+		if(session.getAttribute("loginId") != null) { // 로그인 상태일경우 index페이지로  
 			return "redirect:/admin/index";
 		}
 		List<Notice> noticeList = noticeService.getNoticeList();
@@ -40,9 +40,9 @@ public class LoginController {
 		return "login";
 	}
 	
-	@GetMapping("/admin/logout") 
+	@GetMapping(value="/admin/logout")	//로그아웃 
 	public String logout(HttpSession session) {
-		session.invalidate();
+		session.invalidate(); //세션을 지운다 
 		return "redirect:/";
 	}
 }
