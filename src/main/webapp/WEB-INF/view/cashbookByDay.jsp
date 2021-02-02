@@ -5,23 +5,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<h1>cashbookListByDay</h1>
 	<div>
-		<a href="/admin/cashbookByDay/pre/${currentYear}/${currentMonth}/${currentDay}">
+		<a href="${pageContext.request.contextPath}/admin/cashbookByDay/pre/${currentYear}/${currentMonth}/${currentDay}">
 			이전
 		</a>
 		
 		<span>${currentYear}년 ${currentMonth}월 ${currentDay}일</span>
 		
-		<a href="/admin/cashbookByDay/next/${currentYear}/${currentMonth}/${currentDay}">
+		<a href="${pageContext.request.contextPath}/admin/cashbookByDay/next/${currentYear}/${currentMonth}/${currentDay}">
 			이후
 		</a>
 		
 	</div>
-	<a href="/admin/addCashbook?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay}">수입/지출 입력</a>
+	<a href="${pageContext.request.contextPath}/admin/addCashbook?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay}">수입/지출 입력</a>
 	<table border="1">
 		<thead>
 			<tr>

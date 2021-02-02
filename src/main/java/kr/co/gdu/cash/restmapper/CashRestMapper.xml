@@ -3,104 +3,120 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="kr.co.gdu.cash.restmapper.CashRestMapper">
-  
+
   	<!--- 연도의 통합 지출을 월(1~12)별로 알수있는 ...-->
-  <select id="selectOutOfYear" parameterType="int" resultType="java.util.Map">
+  <select id="selectTotalOutOfYear" parameterType="int" resultType="java.util.Map">
 
        SELECT
 
-         SUM(CASE WHEN MONTH(cashbook_date)=1 THEN cashbook_price END)AS JAN,
-         SUM(CASE WHEN MONTH(cashbook_date)=2 THEN cashbook_price END)AS FEB,
-         SUM(CASE WHEN MONTH(cashbook_date)=3 THEN cashbook_price END)AS MAR,
-         SUM(CASE WHEN MONTH(cashbook_date)=4 THEN cashbook_price END)AS APR,
-         SUM(CASE WHEN MONTH(cashbook_date)=5 THEN cashbook_price END)AS MAY,
-         SUM(CASE WHEN MONTH(cashbook_date)=6 THEN cashbook_price END)AS JUN,
-         SUM(CASE WHEN MONTH(cashbook_date)=7 THEN cashbook_price END)AS JUL,
-         SUM(CASE WHEN MONTH(cashbook_date)=8 THEN cashbook_price END)AS AUG,
-         SUM(CASE WHEN MONTH(cashbook_date)=9 THEN cashbook_price END)AS SEP,
-         SUM(CASE WHEN MONTH(cashbook_date)=10 THEN cashbook_price END)AS OC,
-         SUM(CASE WHEN MONTH(cashbook_date)=11 THEN cashbook_price END)AS NOV,
-     	 SUM(CASE WHEN MONTH(cashbook_date)=12 THEN cashbook_price END)AS DE
-      FROM cashbook
-      WHERE cashbook.cashbook_kind = '지출';
-      AND	YEAR(cashbook_date) = #{year}
+         SUM(CASE WHEN MONTH(cashbook_date)=1 THEN cashbook_price END)AS January,
+         SUM(CASE WHEN MONTH(cashbook_date)=2 THEN cashbook_price END)AS February,
+         SUM(CASE WHEN MONTH(cashbook_date)=3 THEN cashbook_price END)AS March,
+         SUM(CASE WHEN MONTH(cashbook_date)=4 THEN cashbook_price END)AS April,
+         SUM(CASE WHEN MONTH(cashbook_date)=5 THEN cashbook_price END)AS May,
+         SUM(CASE WHEN MONTH(cashbook_date)=6 THEN cashbook_price END)AS June,
+         SUM(CASE WHEN MONTH(cashbook_date)=7 THEN cashbook_price END)AS July,
+         SUM(CASE WHEN MONTH(cashbook_date)=8 THEN cashbook_price END)AS August,
+         SUM(CASE WHEN MONTH(cashbook_date)=9 THEN cashbook_price END)AS September,
+         SUM(CASE WHEN MONTH(cashbook_date)=10 THEN cashbook_price END)AS October,
+         SUM(CASE WHEN MONTH(cashbook_date)=11 THEN cashbook_price END)AS November,
+     	 SUM(CASE WHEN MONTH(cashbook_date)=12 THEN cashbook_price END)AS December
 
-   </select>
-   	
+      FROM cashbook
+      WHERE cashbook.cashbook_kind = '지출'
+      AND    YEAR(cashbook_date) = #{year}
+
+   </select>  	
+
    		<!--- 연도의 통합 수입을 월(1~12)별로 알수있는 ...-->
-     <select id="selectInOfYear" parameterType="int" resultType="java.util.Map">
+
+     <select id="selectTotalInOfYear" parameterType="int" resultType="java.util.Map">
+
+
 
     SELECT
 
-         SUM(CASE WHEN MONTH(cashbook_date)=1 THEN cashbook_price END)AS JAN,
-         SUM(CASE WHEN MONTH(cashbook_date)=2 THEN cashbook_price END)AS FEB,
-         SUM(CASE WHEN MONTH(cashbook_date)=3 THEN cashbook_price END)AS MAR,
-         SUM(CASE WHEN MONTH(cashbook_date)=4 THEN cashbook_price END)AS APR,
-         SUM(CASE WHEN MONTH(cashbook_date)=5 THEN cashbook_price END)AS MAY,
-         SUM(CASE WHEN MONTH(cashbook_date)=6 THEN cashbook_price END)AS JUN,
-         SUM(CASE WHEN MONTH(cashbook_date)=7 THEN cashbook_price END)AS JUL,
-         SUM(CASE WHEN MONTH(cashbook_date)=8 THEN cashbook_price END)AS AUG,
-         SUM(CASE WHEN MONTH(cashbook_date)=9 THEN cashbook_price END)AS SEP,
-         SUM(CASE WHEN MONTH(cashbook_date)=10 THEN cashbook_price END)AS OC,
-         SUM(CASE WHEN MONTH(cashbook_date)=11 THEN cashbook_price END)AS NOV,
-     	 SUM(CASE WHEN MONTH(cashbook_date)=12 THEN cashbook_price END)AS DE
+
+
+         SUM(CASE WHEN MONTH(cashbook_date)=1 THEN cashbook_price END)AS January,
+         SUM(CASE WHEN MONTH(cashbook_date)=2 THEN cashbook_price END)AS February,
+         SUM(CASE WHEN MONTH(cashbook_date)=3 THEN cashbook_price END)AS March,
+         SUM(CASE WHEN MONTH(cashbook_date)=4 THEN cashbook_price END)AS April,
+         SUM(CASE WHEN MONTH(cashbook_date)=5 THEN cashbook_price END)AS May,
+         SUM(CASE WHEN MONTH(cashbook_date)=6 THEN cashbook_price END)AS June,
+         SUM(CASE WHEN MONTH(cashbook_date)=7 THEN cashbook_price END)AS July,
+         SUM(CASE WHEN MONTH(cashbook_date)=8 THEN cashbook_price END)AS August,
+         SUM(CASE WHEN MONTH(cashbook_date)=9 THEN cashbook_price END)AS September,
+         SUM(CASE WHEN MONTH(cashbook_date)=10 THEN cashbook_price END)AS October,
+         SUM(CASE WHEN MONTH(cashbook_date)=11 THEN cashbook_price END)AS November,
+     	 SUM(CASE WHEN MONTH(cashbook_date)=12 THEN cashbook_price END)AS December
+
       FROM cashbook
-      WHERE cashbook.cashbook_kind = '수입';
-      AND	YEAR(cashbook_date) = #{year}
+      WHERE cashbook.cashbook_kind = '수입'
+      AND YEAR(cashbook_date) = #{year}
+
+
 
    </select>
    
    	<!--  연도의 가장 큰 지출을 카테고리 별로 알수있는...  99,00이상-->
-   	
    <select id = "selectOutMaxCategoryYear" parameterType="int" resultType="java.util.Map">
-   
-   SELECT category_name , MAX(cashbook_price)
-	FROM cashbook
-	WHERE cashbook_kind = '지출'
-	AND 
-	YEAR (cashbook_date) = #{year}
-	GROUP BY category_name
+
+
+
+     SELECT
+
+         SUM(CASE WHEN (cashbook.category_name)='관광' THEN cashbook_price END)AS '관광',
+           SUM(CASE WHEN (cashbook.category_name)='생활' THEN cashbook_price END)AS '생활',
+            SUM(CASE WHEN (cashbook.category_name)='식비' THEN cashbook_price END)AS '식비',
+         SUM(CASE WHEN (cashbook.category_name)='의료' THEN cashbook_price END)AS '의료'
+      FROM cashbook
+      WHERE  YEAR(cashbook_date) = #{year}
+
   
+
   </select> 
-  
-  
-  	<!--  2020년  월 선택해서  주간별 지출   # format 형변환 sub - INTERVAL 임의로 + , -   DAYOFWEEK 날짜의 요일을 반환  #'%Y%U' 연도,-->
-  <select id = "selectOutWeekly" parameterType="int" resultType="java.util.Map">
+
+
+  	<!-- 연도의 가장 큰 수입을 카테고리 별로 알수있는... -->
+
+  <select id = "selectInCategoryYear" parameterType="int" resultType="java.util.Map">
+
    
- 	SELECT DATE_FORMAT(DATE_SUB(cashbook_date, INTERVAL (DAYOFWEEK(cashbook_date)-1) DAY), '%Y/%m/%d') as start,
-       DATE_FORMAT(DATE_SUB(cashbook_date, INTERVAL (DAYOFWEEK(cashbook_date)-7) DAY), '%Y/%m/%d') as end,
-       DATE_FORMAT(cashbook_date, '%Y%U') AS `date`,
-          sum(cashbook.cashbook_price)
-  FROM cashbook
-  WHERE year(cashbook_date)=2020
-  AND MONTH (cashbook_date)= #{month}
-  AND cashbook.cashbook_kind = '지출'
- GROUP BY date;
- 
-  
+
+ 	    SELECT
+
+         SUM(CASE WHEN (cashbook.category_name)='급여' THEN cashbook_price END)AS '급여',
+           SUM(CASE WHEN (cashbook.category_name)='용돈' THEN cashbook_price END)AS '용돈'
+      FROM cashbook
+      WHERE  YEAR(cashbook_date) = #{year}
+
+
+
 
   </select>
   
+
   <!--  2020년  월 선택해서  주간별 수입  -->
+
     <select id = "selectInWeekly" parameterType="int" resultType="java.util.Map">
-  
-  
+
+ 
   	SELECT DATE_FORMAT(DATE_SUB(cashbook_date, INTERVAL (DAYOFWEEK(cashbook_date)-1) DAY), '%Y/%m/%d') as start,
        DATE_FORMAT(DATE_SUB(cashbook_date, INTERVAL (DAYOFWEEK(cashbook_date)-7) DAY), '%Y/%m/%d') as end,
        DATE_FORMAT(cashbook_date, '%Y%U') AS `date`,
-          sum(cashbook.cashbook_price)
+          sum(cashbook.cashbook_price) As '수입'
+
   FROM cashbook
   WHERE year(cashbook_date)=2020
   AND MONTH (cashbook_date)= #{month}
   AND cashbook.cashbook_kind = '수입'
  GROUP BY date;
+
  
+  </select>
+
   
 
-  </select>
-  
-  
-  
-  
-  
+
   </mapper>

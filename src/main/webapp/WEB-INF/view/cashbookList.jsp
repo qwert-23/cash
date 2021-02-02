@@ -5,11 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>casbookList</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<h1>cashbookList</h1>
-	<a href="/admin/cashbookListExcel">[전체 cashbook 리스트를 엑셀 파일로 다운]</a>
+	<a href="${pageContext.request.contextPath}/admin/cashbookListExcel">[전체 cashbook 리스트를 엑셀 파일로 다운]</a>
 	<table border="1">
 		<thead>
 			<tr>
@@ -39,9 +40,9 @@
 		</tbody>
 	</table>
 	<div>
-		<a href="/admin//cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1}">[다음달]</a>
-		<a href="/admin//cashbookList?currentPage=${currentPage-1}">[이전]</a>
-		<a href="/admin//cashbookList?currentPage=${currentPage+1}">[다음]</a>
+		<a href="${pageContext.request.contextPath}/admin//cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1}">[다음달]</a>
+		<a href="${pageContext.request.contextPath}/admin//cashbookList?currentPage=${currentPage-1}">[이전]</a>
+		<a href="${pageContext.request.contextPath}/admin//cashbookList?currentPage=${currentPage+1}">[다음]</a>
 	</div>
 </body>
 </html>

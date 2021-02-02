@@ -15,27 +15,28 @@ public class CashRestService {
 	
 	
 	// 모든 연도 통합  1~12월 지출내역 
-	public Map<String, Object> getSelectOutOfYear(int year){
-		
-		return cashRestMapper.selectOutOfYear(year);
+	public Map<String, Object> getTotalOutOfYear(int year){
+		return cashRestMapper.selectTotalOutOfYear(year);
 	}
 	
 	// 모든 연도 통합  1~12월 수입내역 
-	public Map<String, Object> getSslectInOfYear(int year){
-			
-		return cashRestMapper.selectInOfYear(year);
+	public Map<String, Object> getTotalInOfYear(int year){
+		return cashRestMapper.selectTotalInOfYear(year);
 		
+	}
+	// 연도의 가장 큰 지출을 카테고리 별로 알수있는
+	public Map<String,Object>getselectOutMaxCategoryYear(int year){
+		
+		return cashRestMapper.selectOutMaxCategoryYear(year);
 	}
 	
 	// 2020 년  월 선택 주간  지출 내역 
-	public Map<String,Object> getselectOutWeekly(int month){
-		
-		return cashRestMapper.selectOutWeekly(month);
+	public Map<String,Object> getselectInCategoryYear(int year){
+		return cashRestMapper.selectInCategoryYear(year);
 	}
 	
 	// 2020 년  월 선택 주간  수입 내역 
 	public Map<String,Object> getselectInWeekly(int month){
-		
 		return cashRestMapper.selectInWeekly(month);
 	}
 	

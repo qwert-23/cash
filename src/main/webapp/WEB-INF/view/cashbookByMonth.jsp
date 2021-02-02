@@ -5,6 +5,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style type="text/css">
 	.sunday {color : #FF0000;}
 </style>
@@ -21,9 +22,9 @@
 	</div>
 	
 	<h3>
-		<a href="/admin//cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1}">[이전달]</a>
+		<a href="${pageContext.request.contextPath}/admin//cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1}">[이전달]</a>
 		${currentYear}년 ${currentMonth} 월
-		<a href="/admin//cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1}">[다음달]</a>
+		<a href="${pageContext.request.contextPath}/admin//cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1}">[다음달]</a>
 	</h3>
 	
 	<div>
@@ -48,7 +49,7 @@
 						<c:if test="${i-(firstDayOfWeek-1) > 0}">
 							<td>
 								<div><!-- 날짜 -->
-									<a href="/admin/cashbookByDay/now/${currentYear}/${currentMonth}/${i-(firstDayOfWeek-1)}">
+									<a href="${pageContext.request.contextPath}/admin/cashbookByDay/now/${currentYear}/${currentMonth}/${i-(firstDayOfWeek-1)}">
 										${i-(firstDayOfWeek-1)}
 									</a>
 								</div>

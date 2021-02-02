@@ -13,7 +13,7 @@
 		)
 	</insert>
 	
-	<select id="selectMemberById" parameterType="String" resultType="kr.co.gdu.cash.vo.Member" >
+	<select id="selectMemberById" parameterType="String" resultType="kr.co.gdu.cash.vo.Member">
 		SELECT 
 			id,
 			pw

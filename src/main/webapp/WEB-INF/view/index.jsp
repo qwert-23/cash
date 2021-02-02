@@ -5,12 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
+	
 	<h1>index</h1>
 	<!-- 공지 -->
-	<div>공지사항 <a href="/admin/noticeList">more</a></div>
+	<div>공지사항 <a href="${pageContext.request.contextPath}/admin/noticeList/1">more</a></div>
 	<div>
 		<table border="1">
 			<thead>
