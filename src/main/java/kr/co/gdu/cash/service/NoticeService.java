@@ -95,7 +95,7 @@ public class NoticeService {
 		return noticeList;
 	}
 	
-	public int getTotalCount() {	
+	public int getTotalCount() {
 		return noticeMapper.selectTotalCount();
 	}
 	

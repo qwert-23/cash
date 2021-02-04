@@ -11,6 +11,8 @@ import kr.co.gdu.cash.restservice.MemberRestService;
 public class MemberRestController {
 	@Autowired private MemberRestService memberRestService;
 	
+	
+	// id를 확인
 	@PostMapping("/admin/idCheck")
 	public String idCheck(@RequestParam(value = "id") String id) {
 		String returnId = memberRestService.getMemberId(id);

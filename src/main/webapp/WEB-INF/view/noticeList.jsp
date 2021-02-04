@@ -4,17 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>NoticeList</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	
-	<h1>noticeList</h1>
+	<h1>NoticeList</h1>
 	
 	<div>	
 		<div><a href="${pageContext.request.contextPath}/admin/addNotice">글쓰기</a></div>	
-		<table	border="1">
+		<table class="table">
 		
 			<thead>
 				<tr>

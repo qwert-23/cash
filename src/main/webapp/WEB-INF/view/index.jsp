@@ -4,22 +4,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>index</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style type="text/css">
+</style>
+
 </head>
 
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
-	
-	<h1>index</h1>
+	<div class='container'>
+	<h1>Index</h1>
+	</div>
+	<div class='container'>
 	<!-- 공지 -->
 	<div>공지사항 <a href="${pageContext.request.contextPath}/admin/noticeList/1">more</a></div>
 	<div>
-		<table border="1">
+		<table class="table text-container">
 			<thead>
 				<tr>
-					<th>notice_id</th>
-					<th>notice_title</th>
+					<th>No.</th>
+					<th>제목</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -34,7 +39,7 @@
 	</div>
 	<!-- 수입/지출 -->
 	<div>
-		<table border="1">
+		<table class="table">
 			<thead>
 				<tr>
 					<th>날짜</th>
@@ -54,6 +59,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
+	</div>
 	</div>
 </body>
 </html>

@@ -16,10 +16,12 @@ import kr.co.gdu.cash.vo.Cashbook;
 public class CashbookService {
 	@Autowired private CashbookMapper cashBookMapper;
 	
+	
 	public List<Cashbook> getCashbookListAll() {
 		return cashBookMapper.selectCashbookListAll();
 	}
 	
+	// 가계부 리스트
 	public List<Cashbook> getCashbookListByPage(int currentPage, int rowPerPage) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("beginRow", (currentPage-1)*rowPerPage);
@@ -27,10 +29,22 @@ public class CashbookService {
 		return cashBookMapper.selectCashbookListByPage(map);
 	}
 	
+	// 가계부 수입 및 지출 추가
 	public int addCashbook(Cashbook cashbook) {
 		return cashBookMapper.insertCashbook(cashbook);
 	}
 	
+	// 가계부 수입 및 지출 수정
+	public int updateCashbook(Cashbook cashbook) {
+		return cashBookMapper.updateCashbook(cashbook);
+	}
+	
+	// 가계부 수입 및 지출 삭제
+	public int deleteCashbook(int cashbookId) {
+		return cashBookMapper.deleteCashbook(cashbookId);
+	}
+	
+	// 일별 가계부
 	public List<Cashbook> getCashbookListByDay(int currentYear, int currentMonth, int currentDay) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("currentYear", currentYear);
@@ -39,6 +53,7 @@ public class CashbookService {
 		return cashBookMapper.selectCashBookListByDay(map);
 	}
 	
+	// 월별 가계부
 	public List<Map<String, Object>> getCashListByMonth(int currentYear, int currentMonth) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("currentYear", currentYear);

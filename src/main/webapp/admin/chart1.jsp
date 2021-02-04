@@ -18,7 +18,6 @@
  	<body>
  	
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
-	<jsp:include page="/WEB-INF/view/inc/chartMenu.jsp"></jsp:include>
   
 	<div id="table">
 		<div >

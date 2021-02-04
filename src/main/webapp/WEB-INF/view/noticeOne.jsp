@@ -4,33 +4,45 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>noticeOne</title>
+<title>NoticeOne</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script >
+	//댓글입력을 하였을떄
+	$('#submitBtn').click(function() {
+
+	let comment = $('#contentId').val().replace(/<.+?>|\s+|&nbsp;/g, '');
+	// 댓글 입력하지 않았을 경우 입력 요구 및 포커스 이동
+	if (comment == '') {
+		alert('제목을 입력해주세요!');
+	} else{
+	// 유효성 검사를 만족했을 경우 submit
+	$('#formId').submit();
+	}
+});
+
+</script>
+
 </head>
 <body>
 		<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
-	<h1>noticeOne</h1>
-<table border="1">
+		<div class="container">
+	<h1>NoticeOne</h1>
+	</div>
+	<div class="container">
+		<table class="table">
 			<tr>
-				<td>번호</td>
-				<td>${notice.noticeId}</td>
-			</tr>
-			<tr>
-				<td>제목</td>
-				<td>${notice.noticeTitle}</td>
+				<td>No.${notice.noticeId}</td>
+				<td>작성시간: ${notice.noticeDate}</td>
 			</tr>
 			<tr>
 				<td>내용</td>
 				<td>${notice.noticeContent}</td>
 			</tr>
-			<tr>
-				<td>작성시간</td>
-				<td>${notice.noticeDate}</td>
-			</tr>
 		</table>
 	
 	<h3>첨부파일</h3>
-	<table border="1">
+	<table class="table">
 		<c:forEach var="nf" items="${noticeOne.noticefile}">
 			<tr>
 				<td>${nf.noticefileName}</td>
@@ -39,34 +51,46 @@
 	</table>
 	
 	<h3>댓글</h3>
-	
-	<table border="1">
+	<table class="table">
 		<thead>
 			<tr>
 				<th>내용</th>
 				<th>작성일</th>
-				<th>삭제</th>
+				
 			
 			</tr>
 			
 		</thead>
-	
-		<c:forEach var="c" items="${notice.commentList}">
-			<tr>
-			
-				<td>${c.commentContent}</td>
-				<td>${c.commentDate}</td>
+			<!--  댓글이 있을경우 -->
+			<c:forEach var="c" items="${notice.commentList}">
+			<c:if test="${c.commentDate != null}">
+				<tr>
 				
-				<td>
-					<a href="${pageContext.request.contextPath}/admin/removeComment?noticeId=${c.noticeId}&commentId=${c.commentId}">삭제</a>
-				</td>
+					<td>${c.commentContent}</td>
+					<td>${c.commentDate}</td>
+					
+					<td>
+						<a class="btn btn-outline-danger " href="${pageContext.request.contextPath}/admin/removeComment?noticeId=${c.noticeId}&commentId=${c.commentId}">삭제</a>
+					</td>
+					
+				</tr>
+			</c:if>
+			<!-- 댓글이 없을경우 -->
+			<c:if test="${c.commentContent == null}">
+				<tr>
 				
-			</tr>
-		</c:forEach>
+					<td>댓글이 없습니다!</td>
+					
+				</tr>
+			</c:if>
+			</c:forEach>
+		
 	</table>
-	<form action="${pageContext.request.contextPath}/admin/addComment" method="post">
+	
+	<form  id ="formId" action="${pageContext.request.contextPath}/admin/addComment" method="post">
 		<input type="hidden" name="noticeId" value="${notice.noticeId}">
-		<textarea name="commentContent" rows="3" cols="50"></textarea>
-		<button type="submit">댓글입력</button>
+		<textarea id="contentId" name="commentContent" rows="3" cols="50"></textarea>
+		<button  id ='submitBtn' class="btn btn-outline-info" type="button">댓글입력</button>
 	</form>
+	</div>
 </html>

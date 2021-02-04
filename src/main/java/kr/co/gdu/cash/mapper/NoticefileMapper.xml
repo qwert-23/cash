@@ -7,9 +7,9 @@
 			
 			SELECT
 			 
-				noticefile_name					
+				noticefile_name
 			FROM noticefile
-			WHERE notice_id =#{noticeId}	
+			WHERE notice_id =#{noticeId}
 	
 			</select>
 			
@@ -21,7 +21,7 @@
 		WHERE notice_id = #{noticeId}
 			
 	
-	</delete>		
+	</delete>
 		
 		<!-- 파일 작성 -->
 	<insert id ="insertNoticefile" parameterType="kr.co.gdu.cash.vo.Noticefile">
@@ -42,8 +42,4 @@
 		)
 	
 	</insert>
-
-				
-
-
 </mapper>

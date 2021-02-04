@@ -7,16 +7,24 @@ import org.apache.ibatis.annotations.Mapper;
 
 import kr.co.gdu.cash.vo.Notice;
 
-@Mapper // public class NoticeMapperImpl implements NoticeMapper {}
+@Mapper 
 public interface NoticeMapper {
 	// index화면의 최근 5개공지를 보여주는 메서드
 	List<Notice> selectLatestNoiceList(); 
-	 // 공지사항 페이징 해서 보여주는 메서드
+	
+	// 공지사항 페이징 해서 보여주는 메서드
 	List<Notice> selectNoticeListByPage(Map<String, Integer> map);
 	int selectTotalCount();
 	
-	int insertNotice(Notice notice); //추가 
-	int deleteNotice(int boardId); //삭제 
-	int updateNotice(Notice notice); // 수정
-	Notice selectNoticeOne(int noticeId);	//상세
+	// 추가
+	int insertNotice(Notice notice);
+	
+	// 삭제
+	int deleteNotice(int boardId);
+	
+	// 수정
+	int updateNotice(Notice notice);
+	
+	// 상세보기
+	Notice selectNoticeOne(int noticeId);
 }
