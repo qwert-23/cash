@@ -8,6 +8,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container">
  	<ul class="navbar-nav">
  	   <li class="nav-item">
 			<a class="nav-link" href="/cash/admin/index">Index</a>
@@ -19,7 +20,7 @@
 		<a  class="nav-link" href="/cash/admin/cashbookList/1">리스트</a>
 	 </li>
 	  <li class="nav-item">
-		 <a  class="nav-link" href="/cash/admin/noticeList/1">Notice</a>
+		 <a  class="nav-link" href="/cash/admin/noticeList/1">공지사항</a>
 	 </li>
 	  <li class="nav-item  dropdown">
 	  		<a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
@@ -40,4 +41,5 @@
 		<a  class="nav-link" href="/cash/admin/logout">logout</a>
 	</li>
 	</ul>
+	</div>
 </nav>

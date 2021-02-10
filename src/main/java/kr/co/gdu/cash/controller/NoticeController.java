@@ -57,7 +57,8 @@ public class NoticeController {
 	
 	// 공지 상세 보기
 	@GetMapping("/admin/noticeOne/{noticeId}")
-	public String noticeOne(Model model, @PathVariable(value = "noticeId") int noticeId) {
+	public String noticeOne(Model model, 
+			@PathVariable(value = "noticeId") int noticeId) {
 		Notice notice = noticeService.getNoticeOne(noticeId);
 		model.addAttribute("notice", notice);
 		return "noticeOne";

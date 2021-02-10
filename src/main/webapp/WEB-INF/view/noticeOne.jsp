@@ -8,18 +8,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script >
-	//댓글입력을 하였을떄
-	$('#submitBtn').click(function() {
-
-	let comment = $('#contentId').val().replace(/<.+?>|\s+|&nbsp;/g, '');
-	// 댓글 입력하지 않았을 경우 입력 요구 및 포커스 이동
-	if (comment == '') {
-		alert('제목을 입력해주세요!');
-	} else{
-	// 유효성 검사를 만족했을 경우 submit
-	$('#formId').submit();
-	}
-});
 
 </script>
 
@@ -45,7 +33,7 @@
 	<table class="table">
 		<c:forEach var="nf" items="${noticeOne.noticefile}">
 			<tr>
-				<td>${nf.noticefileName}</td>
+				<td><a href="${pageContext.request.contextPath}/upload/${nf.noticefileName}">${nf.noticefileName}</a></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -90,7 +78,7 @@
 	<form  id ="formId" action="${pageContext.request.contextPath}/admin/addComment" method="post">
 		<input type="hidden" name="noticeId" value="${notice.noticeId}">
 		<textarea id="contentId" name="commentContent" rows="3" cols="50"></textarea>
-		<button  id ='submitBtn' class="btn btn-outline-info" type="button">댓글입력</button>
+		<button  id ='submitBtn' class="btn btn-outline-info" type="submit">댓글입력</button>
 	</form>
 	</div>
 </html>
